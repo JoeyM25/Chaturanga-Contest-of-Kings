@@ -12,3 +12,5 @@ script = ExtResource("2_w6ye5")
 [node name="Dots" type="Node2D" parent="." unique_id=626778662]
 
 [node name="Turn" type="Sprite2D" parent="." unique_id=1624696961]
+modulate = Color(1, 1, 1, 0.58431375)
+z_index = -10
