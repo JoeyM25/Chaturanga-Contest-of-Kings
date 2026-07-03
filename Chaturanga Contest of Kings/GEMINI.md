@@ -31,6 +31,8 @@ Chaturanga Contest of Kings/
 * **Git Flow:** Use clear feature branch separations (`feature/shop-mechanics`, `bugfix/grid-tiling`).
 * **Code Alignment:** Follow `.editorconfig` style properties explicitly to ensure formatting consistency between teammates.
 * **Review Gateways:** Submit clear Pull Requests on GitHub; direct commits to stable tracks are restricted to preserve build health.
+* **Code Change Reviews:** All code changes must be reviewed and approved by the team before they are implemented in the codebase.
+* **AI Tool Approvals:** The AI coding assistant must not edit project files directly without explicit user approval. All code changes should be proposed first, allowing the user to review them or implement them themselves.
 
 ---
 

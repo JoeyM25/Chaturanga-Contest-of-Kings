@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://7w6yrpqvi5it"]
+
+[ext_resource type="Script" uid="uid://dbvf3ytnato4n" path="res://Scripts/shop.gd" id="1_a0mxf"]
+[ext_resource type="Script" uid="uid://dijve5m64q7fa" path="res://Scripts/ShopItem.gd" id="2_io27d"]
+[ext_resource type="Resource" uid="uid://molnwvhf220w" path="res://Resources/pawn.tres" id="3_fdj0q"]
+
+[node name="Shop" type="Control" unique_id=1339991049]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_a0mxf")
+available_pieces = Array[ExtResource("2_io27d")]([ExtResource("3_fdj0q")])
+
+[node name="GridContainer" type="GridContainer" parent="." unique_id=1586471386]
+layout_mode = 1
+offset_left = 132.0
+offset_top = 73.0
+offset_right = 989.0
+offset_bottom = 595.0
+columns = 2
+
+[node name="Pieces" type="HBoxContainer" parent="GridContainer" unique_id=792875468]
+custom_minimum_size = Vector2(100, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Fate Cards" type="HBoxContainer" parent="GridContainer" unique_id=38212374]
+custom_minimum_size = Vector2(100, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Tombs" type="HBoxContainer" parent="GridContainer" unique_id=173114739]
+custom_minimum_size = Vector2(100, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Cell Modifiers" type="HBoxContainer" parent="GridContainer" unique_id=749640485]
+custom_minimum_size = Vector2(100, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Cash" type="Label" parent="." unique_id=444087260]
+layout_mode = 0
+offset_left = 907.0
+offset_top = 7.0
+offset_right = 1142.0
+offset_bottom = 86.0
+text = "Cash: "
+
+[node name="Buttons" type="Control" parent="." unique_id=115725636]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="NextBtn" type="Button" parent="Buttons" unique_id=1293754751]
+layout_mode = 0
+offset_left = 931.0
+offset_top = 545.0
+offset_right = 1110.3507
+offset_bottom = 603.5377
+text = "Next Match"
+
+[node name="RerollBtn" type="Button" parent="Buttons" unique_id=476429094]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 557.4617
+offset_right = 204.0
+offset_bottom = 610.0
+text = "Re-Roll"
+
+[connection signal="pressed" from="Buttons/NextBtn" to="." method="_on_next_btn_pressed"]
+[connection signal="pressed" from="Buttons/RerollBtn" to="." method="_on_reroll_btn_pressed"]

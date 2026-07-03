@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ShopItem" format=3 uid="uid://molnwvhf220w"]
+
+[ext_resource type="Script" uid="uid://dijve5m64q7fa" path="res://Scripts/ShopItem.gd" id="1_4poe5"]
+[ext_resource type="Texture2D" uid="uid://nft2c70y5uwo" path="res://Assets/white_pawn.png" id="1_lwgli"]
+
+[resource]
+script = ExtResource("1_4poe5")
+name = "White Pawn"
+value = 3
+description = "A basic pawn to add to your collection. "
+icon = ExtResource("1_lwgli")
+effect_value = null
+metadata/_custom_type_script = "uid://dijve5m64q7fa"

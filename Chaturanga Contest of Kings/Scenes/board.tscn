@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://nf221ahxxj6w"]
 
 [ext_resource type="Texture2D" uid="uid://cvtyb4gj5y33x" path="res://Assets/Chess_board.png" id="1_jeysu"]
-[ext_resource type="Script" uid="uid://be54fuumhqpc7" path="res://chess.gd" id="2_w6ye5"]
+[ext_resource type="Script" uid="uid://be54fuumhqpc7" path="res://Scripts/chess.gd" id="2_2wvcj"]
 
 [node name="Board" type="Sprite2D" unique_id=546837269]
 texture = ExtResource("1_jeysu")
-script = ExtResource("2_w6ye5")
+script = ExtResource("2_2wvcj")
 
 [node name="Pieces" type="Node2D" parent="." unique_id=668940076]
 

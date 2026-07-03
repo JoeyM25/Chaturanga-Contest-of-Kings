@@ -214,24 +214,23 @@ func set_move(var2, var1):
 			board[var2][var1] = board[selected_piece.x][selected_piece.y]
 			board[selected_piece.x][selected_piece.y] = 0
 			white = !white
-			threefold_position(board)
+			if promotion_square == null:
+				threefold_position(board)
 			display_board()
 			break
 	
 	delete_dots()
 	state = false
 	
+	if promotion_square != null:
+		return
+	
 	if (selected_piece.x != var2 || selected_piece.y != var1) && (white && board[var2][var1] > 0 || !white && board[var2][var1] < 0):
 		selected_piece = Vector2(var2, var1)
 		show_options()
 		state = true
-	elif is_stalemate():
-		if white && is_in_check(white_king_pos) || !white && is_in_check(black_king_pos):
-			print("Checkmate")
-		else: display_draw()
-	
-	if fifty_move_rule == 50: display_draw()
-	elif insuficient_material(): display_draw()
+	else:
+		check_game_over()
  	
 func get_moves(selected: Vector2):
 	var _moves = []
@@ -358,9 +357,9 @@ func get_king_moves(piece_position: Vector2):
 					_moves.append(pos)
 				
 	if white && !white_king:
-		if !white_rook_left && is_empty(Vector2(0, 1)) && is_empty(Vector2(0, 2)) && !is_in_check(Vector2(0, 2)) && is_empty(Vector2(0, 3) && !is_in_check(Vector2(0, 3)) && !is_in_check(Vector2(0, 4))):
+		if !white_rook_left && is_empty(Vector2(0, 1)) && is_empty(Vector2(0, 2)) && !is_in_check(Vector2(0, 2)) && is_empty(Vector2(0, 3)) && !is_in_check(Vector2(0, 3)) && !is_in_check(Vector2(0, 4)):
 			_moves.append(Vector2(0, 2))
-		elif !white_rook_right && !is_in_check(Vector2(0, 4)) && is_empty(Vector2(0, 5))  && !is_in_check(Vector2(0, 5)) && is_empty(Vector2(0, 6)  && !is_in_check(Vector2(0, 6))):
+		elif !white_rook_right && !is_in_check(Vector2(0, 4)) && is_empty(Vector2(0, 5))  && !is_in_check(Vector2(0, 5)) && is_empty(Vector2(0, 6))  && !is_in_check(Vector2(0, 6)):
 			_moves.append(Vector2(0, 6))
 	elif !white && !black_king:
 		if !black_rook_left && is_empty(Vector2(7, 1)) && is_empty(Vector2(7, 2)) && !is_in_check(Vector2(7, 2)) && is_empty(Vector2(7, 3)) && !is_in_check(Vector2(7, 3)) && !is_in_check(Vector2(7, 4)):
@@ -494,9 +493,24 @@ func _on_button_pressed(button):
 	white_pieces.visible = false
 	black_pieces.visible = false
 	promotion_square = null
+	threefold_position(board)
 	display_board()
+	check_game_over()
+
+
+func check_game_over():
+	if is_stalemate():
+		if white && is_in_check(white_king_pos) || !white && is_in_check(black_king_pos):
+			go_to_shop()
+		else: display_draw()
 	
+	if fifty_move_rule == 50: display_draw()
+	elif insuficient_material(): display_draw()
 	
+func go_to_shop():
+	get_tree().change_scene_to_file("res://Scenes/shop.tscn")
+	
+
 func is_in_check(king_pos: Vector2):
 	var directions = [Vector2(0, 1), Vector2(0, -1), Vector2(1, 0), Vector2(-1, 0), 
 	Vector2(1, 1), Vector2(1, -1), Vector2(-1, 1), Vector2(-1, -1)]
